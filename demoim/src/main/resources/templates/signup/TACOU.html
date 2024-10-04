@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>회원가입 이용약관</title>
 </head>
 <body>
   <div class="container">
@@ -11,37 +11,29 @@
     <form id="termsForm">
         <div class="terms">
             <h2>이용약관</h2>
-            <iframe src="signup.html">
-                본 약관은 회사가 제공하는 서비스의 이용에 대한 기본적인 내용을 규정합니다.
-                ...
-            </iframe>
+            <iframe src="/signup/tacou1" width="100%" height="200px"></iframe>
             <label>
-                <input type="checkbox" class="agreeTerm" required>
+                <input type="checkbox" class="agreeTerm" id="agreeTerms1" required name="essential">
                 이용약관에 동의합니다.
             </label>
 
             <h2>개인정보 처리방침</h2>
-            <p>
-                회사는 고객의 개인정보를 소중히 다루며, 법령에 따라 처리합니다.
-                ...
-            </p>
+            <iframe src="/signup/tacou2" width="100%" height="200px" name="essential"></iframe>
             <label>
-                <input type="checkbox" class="agreeTerm" required>
+                <input type="checkbox" class="agreeTerm" id="agreeTerms2" required>
                 개인정보 처리방침에 동의합니다.
             </label>
 
-            <h2>서비스 이용 규칙</h2>
-            <p>
-                사용자에게 제공되는 서비스의 이용 규칙 및 책임에 대해 안내합니다.
-                ...
-            </p>
+            <h2>위치기반서비스이용약관</h2>
+            <iframe src="/signup/tacou3" width="100%" height="200px"></iframe>
             <label>
-                <input type="checkbox" class="agreeTerm" required>
+                <input type="checkbox" class="agreeTerm" id="agreeTerms3" required name="essential">
                 서비스 이용 규칙에 동의합니다.
             </label>
         </div>
-        <button type="submit">회원가입</button>
+        <button type="submit" name="check">다음</button>
     </form>
-</div>
+  </div>
+  <script src="../../js/"></script>
 </body>
 </html>
