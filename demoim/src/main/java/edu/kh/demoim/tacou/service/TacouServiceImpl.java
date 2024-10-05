@@ -1,8 +1,8 @@
-package edu.kh.demoim.main.signup.tacou.service;
+package edu.kh.demoim.tacou.service;
 
 import org.springframework.stereotype.Service;
 
-import edu.kh.demoim.main.signup.tacou.mapper.TacouMapper;
+import edu.kh.demoim.tacou.mapper.TacouMapper;
 import lombok.RequiredArgsConstructor;
 
 @Service

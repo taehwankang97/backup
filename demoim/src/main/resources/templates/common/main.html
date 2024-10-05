@@ -7,7 +7,10 @@
 </head>
 <body>
   <form action="GET">
-    <a href="/signup">회원가입</a>
+    <a href="/tacou">회원가입</a>
+    <select id="email" name="email" required>
+      <option th:each="email : ${emailOptions}" th:value="${email}" th:text="${email}"></option>
+  </select>
   </form>
 </body>
 </html>

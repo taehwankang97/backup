@@ -1,4 +1,4 @@
-package edu.kh.demoim.main.signup.tacou.mapper;
+package edu.kh.demoim.tacou.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
