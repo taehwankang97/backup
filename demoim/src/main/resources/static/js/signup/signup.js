@@ -15,6 +15,64 @@ function changeEmail() {
     }
   }
 // 이메일 유효성 검사 해야함
+const memberEmail = document.querySelector("#memberEmail");
+const memberKind = document.querySelector("#memberKind");
+const emailMessage = document.querySelector("#emailMessage");
+
+// 2 이메일 메시지를 미리 작성
+const emailMessageObj = {}; // 빈 객체
+emailMessageObj.invaild = "알맞은 이메일 형식으로 작성해 주세요.";
+
+// 3) 이메일이 입력될 때 마다 유효성 검사를 수행
+memberEmail.addEventListener("input", e => {
+
+  // 입력된 값 얻어오기
+  const inputEmail = memberEmail.value.trim();
+
+  // 4) 입력된 이메일이 없을 경우
+  if(inputEmail.length === 0){
+    
+    // 이메일 메시지를 normal 상태 메시지로 변경
+    emailMessage.innerText = emailMessageObj.normal;
+
+    // #emailMessage에 색상 관련 클래스를 모두 제거
+    emailMessage.classList.remove("confirm", "error");
+
+    // checkObj에서 memberEmail을 false로 변경
+    checkObj.memberEmail = false;
+
+    memberEmail.value = ""; // 잘못 입력된 값(띄어쓰기) 제거
+    
+    return;
+  }
+
+
+  // 5) 이메일 형식이 맞는지 검사(정규 표현식을 이용한 검사)
+
+  // 이메일 형식 정규 표현식 객체
+  const regEx1 = /^[a-zA-Z0-9._%+-]+$/;
+  
+  const regEx2 = /^[a-zA-Z0-9.-]+$/;
+
+  const regEx3 = /^\.[a-zA-Z]{2,}$/;
+
+  // 입력 값이 이메일 형식이 아닌 경우
+  if( regEx1.test(inputEmail) === false ){ 
+    emailMessage.innerText = emailMessageObj.invaild; // 유효 X 메시지
+    emailMessage.classList.add("error"); // 빨간 글씨 추가
+    emailMessage.classList.remove("confirm"); // 초록 글씨 제거
+    checkObj.memberEmail = false; // 유효하지 않다고 체크
+    return;
+  }
+   // 입력 값이 이메일 형식이 아닌 경우
+   if( regEx2.test(inputEmail) === false ){ 
+    emailMessage.innerText = emailMessageObj.invaild; // 유효 X 메시지
+    emailMessage.classList.add("error"); // 빨간 글씨 추가
+    emailMessage.classList.remove("confirm"); // 초록 글씨 제거
+    checkObj.memberEmail = false; // 유효하지 않다고 체크
+    return;
+  }
+});
 
 //주소 api
   function findAddress() {
@@ -45,72 +103,3 @@ function changeEmail() {
 const searchAddress = document.querySelector("#searchAddress");
 searchAddress.addEventListener("click", findAddress);
 
-/* 비밀번호 유효성 검사 */
-
-const memberPw = document.querySelector("#memberPw");
-const memberPwConfirm = document.querySelector("#memberPwConfirm");
-const pwMessage = document.querySelector("#pwMessage");
-const pwMessageObj = {};
-pwMessageObj.normal = "영어,숫자,특수문자 1글자 이상, 6~20자 사이.";
-pwMessageObj.invaild = "유효하지 않은 비밀번호 형식입니다.";
-pwMessageObj.vaild = "유효한 비밀번호 형식입니다.";
-pwMessageObj.error = "비밀번호가 일치하지 않습니다.";
-pwMessageObj.check = "비밀번호가 일치 합니다.";
-memberPw.addEventListener("input", () => {
-  const inputPw = memberPw.value.trim();
-  if(inputPw.length === 0){ // 비밀번호 미입력
-    pwMessage.innerText = pwMessageObj.normal;
-    pwMessage.classList.remove("confirm", "error");
-    checkObj.memberPw = false;
-    memberPw.value = "";
-    return;
-  }
-  // 비밀번호 정규표현식 검사
-  const lengthCheck = inputPw.length >= 6 && inputPw.length <= 20;
-  const letterCheck = /[a-zA-Z]/.test(inputPw); // 영어 알파벳 포함
-  const numberCheck = /\d/.test(inputPw); // 숫자 포함
-  const specialCharCheck = /[\!\@\#\_\-]/.test(inputPw); // 특수문자 포함
-  // 조건이 하나라도 만족하지 못하면
-  if ( !(lengthCheck && letterCheck && numberCheck && specialCharCheck) ) {
-    pwMessage.innerText = pwMessageObj.invaild;
-    pwMessage.classList.remove("confirm");
-    pwMessage.classList.add("error");
-    checkObj.memberPw = false;
-    return;
-  }
-  pwMessage.innerText = pwMessageObj.vaild;
-  pwMessage.classList.remove("error");
-  pwMessage.classList.add("confirm");
-  checkObj.memberPw = true;
-  // 비밀번호 확인이 작성된 상태에서
-  // 비밀번호가 입력된 경우
-  if(memberPwConfirm.value.trim().length > 0){
-    checkPw(); // 같은지 비교하는 함수 호출
-  }
-});
-/* ----- 비밀번호, 비밀번호 확인 같은지 검사하는 함수 ----- */
-function checkPw(){
-  // 같은 경우
-  if(memberPw.value === memberPwConfirm.value){
-    pwMessage.innerText = pwMessageObj.check;
-    pwMessage.classList.add("confirm");
-    pwMessage.classList.remove("error");
-    checkObj.memberPwConfirm = true;
-    return;
-  }
-  // 다른 경우
-  pwMessage.innerText = pwMessageObj.error;
-  pwMessage.classList.add("error");
-  pwMessage.classList.remove("confirm");
-  checkObj.memberPwConfirm = false;
-}
-/* ----- 비밀번호 확인이 입력 되었을 때  ----- */
-memberPwConfirm.addEventListener("input", () => {
-  // 비밀번호 input에 작성된 값이 유효한 형식일때만 비교
-  if(checkObj.memberPw === true){
-    checkPw();
-    return;
-  }
-  // 비밀번호 input에 작성된 값이 유효하지 않은 경우
-  checkObj.memberPwConfirm = false;
-});

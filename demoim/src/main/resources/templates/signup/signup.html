@@ -3,29 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>회원가입</title>
+  <link rel="stylesheet" href="/css/signup/signup.css">
 </head>
 <body>
-  <h1>회원 가입 홈페이지</h1>
+  <h1 class="title">회원 가입 홈페이지</h1>
   
     <section class="signUp-content">
       <div class="signup-box">
         <label for="memberEmail">
-          <span class="required">*</span>아이디(이메일)
+          <span class="required">*</span>이메일
         </label>
         <div class="signUp-input-area">
           <label for="email-kind">
             <input type="text" name="memberEmail" id="memberEmail" 
-            placeholder="아이디(이메일)" maxlength="15" autocomplete="off">
+             maxlength="15" autocomplete="off"  size="8">
             <span>@</span>
             <input type="text" id="email-kind"
-            placeholder="" maxlength="15" autocomplete="off">
-            <select id="email-type" name="email" onchange="changeEmail()">
+            placeholder="" maxlength="15" autocomplete="off"
+            size="8">
+            <select id="email-type" name="email" onchange="changeEmail()" >
+              <option value="">직접입력</option>
               <option value="naver.com">naver.com</option>
               <option value="daum.com">daum.net</option>
               <option value="google.com">google.com</option>
               <option value="yahoo.com">yahoo.com</option>
-              <option value="">직접입력</option>
               <button id="sendAuthKeyBtn" type="button">인증번호 받기</button>
             </select>
           </label>
@@ -39,6 +41,11 @@
           <button id="checkAuthKeyBtn" type="button">인증하기</button>
         </div>
         <span class="signUp-message" id="authKeyMessage"></span>
+        <label for="memberId">*</label> 아이디
+        <div class="signUp-input-area">
+          <input type="text" name="memberId" id="memberId" 
+          placeholder="아이디" maxlength="20" >
+        </div>
         <label for="memberPw">
           <span class="required">*</span> 비밀번호
         </label>
