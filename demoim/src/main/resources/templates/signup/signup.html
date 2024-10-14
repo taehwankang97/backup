@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="/css/signup/signup.css">
 </head>
 <body>
-  <h1>회원 가입 홈페이지</h1>
+ <div class="pn"> <h1>회원 가입 홈페이지</h1></div>
   
     <section class="signUp-content">
       <div class="signup-box">
@@ -16,16 +17,17 @@
         <div class="signUp-input-area">
           <label for="email-kind">
             <input type="text" name="memberEmail" id="memberEmail" 
-            placeholder="아이디(이메일)" maxlength="15" autocomplete="off">
+            placeholder="아이디(이메일)" maxlength="15" autocomplete="off"
+            size = "9">
             <span>@</span>
             <input type="text" id="email-kind"
-            placeholder="" maxlength="15" autocomplete="off">
+            placeholder="" maxlength="15" autocomplete="off" size = "9">
             <select id="email-type" name="email" onchange="changeEmail()">
+              <option value="">직접입력</option>
               <option value="naver.com">naver.com</option>
               <option value="daum.com">daum.net</option>
               <option value="google.com">google.com</option>
               <option value="yahoo.com">yahoo.com</option>
-              <option value="">직접입력</option>
               <button id="sendAuthKeyBtn" type="button">인증번호 받기</button>
             </select>
           </label>

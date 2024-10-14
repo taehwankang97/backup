@@ -14,6 +14,7 @@ public class FindIdPwController {
 		
 		return "findIdPw/findIdPw";
 	}
+	
 
 	
 }
