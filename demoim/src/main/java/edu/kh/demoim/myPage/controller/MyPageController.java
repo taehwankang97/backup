@@ -17,11 +17,19 @@ public class MyPageController {
 	private final MyPageService service;
 	
 	@GetMapping("myPage")
-	public String getMethodName() {
-		return "myPage/myPage";
+	public String info() {
+		return "myPage/myPage-info";
 	}
 	
+	@GetMapping("changPw")
+	public String changePw() {
+		return "myPage/myPage-changPw";
+	}
 	
+	@GetMapping("withdrawal")
+	public String withdrawal() {
+		return "myPage/myPage-withdrawal";
+	}
 
 	
 }
