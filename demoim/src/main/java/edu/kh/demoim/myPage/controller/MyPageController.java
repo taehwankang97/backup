@@ -16,14 +16,14 @@ public class MyPageController {
 
 	private final MyPageService service;
 	
-	@GetMapping("myPage")
+	@GetMapping("info")
 	public String info() {
 		return "myPage/myPage-info";
 	}
 	
-	@GetMapping("changPw")
+	@GetMapping("changePw")
 	public String changePw() {
-		return "myPage/myPage-changPw";
+		return "myPage/myPage-changePw";
 	}
 	
 	@GetMapping("withdrawal")
@@ -31,5 +31,9 @@ public class MyPageController {
 		return "myPage/myPage-withdrawal";
 	}
 
-	
+	@GetMapping("withdrawalPage")
+	public String withdrawalPage() {
+		return "myPage/withdrawalPage";
+	}
+
 }
