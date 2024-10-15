@@ -213,4 +213,4 @@ memberPwConfirm.addEventListener("input", () => {
 
   // 비밀번호 input에 작성된 값이 유효하지 않은 경우
   checkObj.memberPwConfirm = false;
-});
+})
